@@ -19,7 +19,6 @@ int get_utf8_encode_size(char firstChar) {
 }
 
 std::wstring s2ws(std::string str) {
-    int count = 0;
     std::wstring wstr;
     size_t p = 0;
     while (p < str.length()) {
@@ -30,7 +29,6 @@ std::wstring s2ws(std::string str) {
             wchar = str[p];
             wstr.push_back(wchar);
             p += utfbytes;
-            count += utfbytes;
         }
         else if (utfbytes == 2 && p+1 < str.length()) {
             char b1 = str[p];
@@ -44,7 +42,6 @@ std::wstring s2ws(std::string str) {
             *(pOutput+1) = (b1 >> 2) & 0x07;
             wstr.push_back(wchar);
             p += utfbytes;
-            count += utfbytes;
         }
         else if (utfbytes == 3 && p+2 < str.length()) {
             char b1 = str[p];
@@ -58,14 +55,12 @@ std::wstring s2ws(std::string str) {
             *(pOutput+1) = (b1 << 4) + ((b2 >> 2) & 0x0F);
             wstr.push_back(wchar);
             p += utfbytes;
-            count += utfbytes;
-        }
+         }
         else {
             p++;
             continue;
         }
     }
-    printf("count %d\n", count);
     return wstr;
 }
 
