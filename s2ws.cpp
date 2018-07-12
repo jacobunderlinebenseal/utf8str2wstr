@@ -66,7 +66,7 @@ std::wstring s2ws(std::string str) {
 
 int main()
 {
-    std::string str = "y=20-×是)不是正例数9.已知y=(k-3)x+k2-9是关于x的正比例函数求当x=-4时,y的值.";
+    std::string str = "已知y=(k-3)x+k-9是关于x的正比例函数求当x=-4时y的值.";
     printf("str len %lu\n", str.length());
     std::wstring wstr = s2ws(str);
     printf("wstr len %lu\n", wstr.length());
